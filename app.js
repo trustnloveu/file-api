@@ -53,12 +53,12 @@ require("./config/config"); // 프로퍼티
 /************************************************************
  * Controller
  ************************************************************/
-// const errorController = require("./controllers/error");
+// const sampleController = require("./src/controllers/sample");
 
 /************************************************************
  * Router
  ************************************************************/
-// const nodeRoutes = require("./routes/node");
+const sampleRoute = require("./src/routes/sample");
 
 /************************************************************
  * Util
@@ -93,7 +93,7 @@ app.use(express.urlencoded({ extended: false }));
 /************************************************************
  * Navigation
  ************************************************************/
-// app.use("/node", nodeRoutes);
+app.use("/", sampleRoute);
 
 // 404 페이지
 // app.use(errorController.get404);
@@ -101,6 +101,8 @@ app.use(express.urlencoded({ extended: false }));
 /************************************************************
  * DB Connection
  ************************************************************/
+const mysql = require("./src/utils/db/mysql");
+
 // sequelize
 //   .sync() // { force: true }
 //   .then(() => {
@@ -134,6 +136,6 @@ app.use(express.urlencoded({ extended: false }));
 // logger.info(`Current Running Environment ::: ${process.env.NODE_ENV}`);
 
 app.listen(process.env.PORT || 3000, () => {
-//   logger.info(`Listening Port ::: ${process.env.PORT || 3000}`);
-console.log(`Listening Port ::: ${process.env.PORT || 3000}`);
+  //   logger.info(`Listening Port ::: ${process.env.PORT || 3000}`);
+  console.log(`Listening Port ::: ${process.env.PORT || 3000}`);
 });
